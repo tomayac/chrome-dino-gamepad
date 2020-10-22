@@ -1,0 +1,22 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.controller {
+  position: absolute;
+  top: 1rem;
+}
+
+.interstitial-wrapper {
+  width: 600px;
+  height: 150px;
+}
+
+
+#offline-resources {
+  display: none;
+}
