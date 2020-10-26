@@ -3,12 +3,46 @@
 // found in the LICENSE file.
 (function() {
 'use strict';
+
+// dark mode
+
+const darkModeToggleBtn = document.getElementById('dark-mode-toggle');
+let theme = localStorage.getItem('theme');
+
+if (theme === 'dark') enableDarkMode();
+
+darkModeToggleBtn.addEventListener('click', () => {
+  theme = localStorage.getItem('theme');
+  if (theme === 'dark') {
+    disableDarkMode();
+  } else {
+    enableDarkMode();
+  }
+});
+
+function enableDarkMode() {
+  darkModeToggleBtn.innerHTML = '🌞';
+  localStorage.setItem('theme', 'dark');
+  document.body.classList.add('dark-mode');
+}
+
+function disableDarkMode() {
+  darkModeToggleBtn.innerHTML = '🌒';
+  localStorage.setItem('theme', 'light');
+  document.body.classList.remove('dark-mode');
+}
+
+window
+  .matchMedia('(prefers-color-scheme: dark)')
+  .addListener((e) => (e.matches ? enableDarkMode() : disableDarkMode()));
+
 /**
  * T-Rex runner.
  * @param {string} outerContainerId Outer containing element id.
  * @param {Object} opt_config
  * @constructor
  * @export
+ * 
  */
 function Runner(outerContainerId, opt_config) {
   // Singleton

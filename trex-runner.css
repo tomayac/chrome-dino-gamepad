@@ -1,9 +1,21 @@
+:root {
+  --primary-bg: rgb(255, 255, 255);
+  --primary-fg: #000;
+}
+
+.dark-mode {
+  --primary-bg: #020202;
+  --primary-fg: #fff;
+}
+
 body {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
+  background: var(--primary-bg);
+  color: var(--primary-fg);
 }
 
 .controller {
@@ -16,7 +28,14 @@ body {
   height: 150px;
 }
 
-
 #offline-resources {
   display: none;
+}
+
+#dark-mode-toggle {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  font-size: 25px;
+  cursor: pointer;
 }
