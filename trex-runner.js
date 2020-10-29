@@ -11,7 +11,7 @@ let theme = localStorage.getItem('theme');
 
 if (theme === 'dark') enableDarkMode();
 
-darkModeToggleBtn.addEventListener('click', () => {
+darkModeToggleBtn.addEventListener('click', function() {
   theme = localStorage.getItem('theme');
   if (theme === 'dark') {
     disableDarkMode();
@@ -34,7 +34,9 @@ function disableDarkMode() {
 
 window
   .matchMedia('(prefers-color-scheme: dark)')
-  .addListener((e) => (e.matches ? enableDarkMode() : disableDarkMode()));
+  .addListener(function(e) {
+    (e.matches ? enableDarkMode() : disableDarkMode());
+  });
 window
   .matchMedia('(prefers-color-scheme: dark)').matches
   ? enableDarkMode() :
@@ -389,10 +391,10 @@ Runner.prototype = {
     window.addEventListener(Runner.events.RESIZE,
         this.debounceResize.bind(this));
 
-    window.addEventListener('gamepadconnected', (e) => {
+    window.addEventListener('gamepadconnected', function(e) {
       this.gamepadHandler(e, true);
     }, false);
-    window.addEventListener('gamepaddisconnected', (e) => {
+    window.addEventListener('gamepaddisconnected', function(e) {
         this.gamepadHandler(e, false);
     }, false);
   },
@@ -405,10 +407,10 @@ Runner.prototype = {
       // We need this so the game remains resumable from the gamepad in the
       // "game over" state.
       if (Object.keys(this.gamepads).length === 1) {
-        this.gamepadRestartInterval = setInterval(() => {
+        this.gamepadRestartInterval = setInterval(function() {
           this.gamepadRestart();
         }, 100);
-        this.gamepadIdleInterval = setInterval(() => {
+        this.gamepadIdleInterval = setInterval(function() {
           this.gamepadsIdle = true;
         }, 10000);
       }
