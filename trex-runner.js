@@ -439,11 +439,11 @@ Runner.prototype = {
       // Left analog stick.
       const y = gamepad.axes[1];
       // Left D-pad.
-      const up = gamepad.buttons[12]?.pressed;
+      const up = gamepad.buttons[12].pressed;
       // A/B/X/Y Buttons
-      const buttonPressed = gamepad.buttons[0]?.pressed ||
-          gamepad.buttons[1]?.pressed || gamepad.buttons[2]?.pressed ||
-          gamepad.buttons[3]?.pressed;
+      const buttonPressed = gamepad.buttons[0].pressed ||
+          gamepad.buttons[1].pressed || gamepad.buttons[2].pressed ||
+          gamepad.buttons[3].pressed;
       if (up || y <= -0.5 || buttonPressed) {
         this.restart();
       }
@@ -460,12 +460,12 @@ Runner.prototype = {
       // Left analog stick.
       const y = gamepad.axes[1];
       // Left D-pad.
-      const up = gamepad.buttons[12]?.pressed;
-      const down = gamepad.buttons[13]?.pressed;
+      const up = gamepad.buttons[12].pressed;
+      const down = gamepad.buttons[13].pressed;
       // A/B/X/Y Buttons
-      const buttonPressed = gamepad.buttons[0]?.pressed ||
-          gamepad.buttons[1]?.pressed || gamepad.buttons[2]?.pressed ||
-          gamepad.buttons[3]?.pressed;
+      const buttonPressed = gamepad.buttons[0].pressed ||
+          gamepad.buttons[1].pressed || gamepad.buttons[2].pressed ||
+          gamepad.buttons[3].pressed;
       if (up || y <= -0.5 || buttonPressed) {
         const event = new Event('keydown');
         event.keyCode = 32; // Space key
