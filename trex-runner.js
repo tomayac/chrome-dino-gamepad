@@ -6,7 +6,7 @@
 
 // dark mode
 
-const darkModeToggleBtn = document.getElementById('dark-mode-toggle');
+var darkModeToggleBtn = document.getElementById('dark-mode-toggle');
 let theme = localStorage.getItem('theme');
 
 if (theme === 'dark') enableDarkMode();
@@ -124,17 +124,17 @@ var DEFAULT_WIDTH = 600;
  */
 var FPS = 60;
 
-/** @const */
+/** @var */
 var IS_HIDPI = window.devicePixelRatio > 1;
 
-/** @const */
+/** @var */
 var IS_IOS = window.navigator.userAgent.indexOf('CriOS') > -1 ||
     window.navigator.userAgent == 'UIWebViewForStaticFileContent';
 
-/** @const */
+/** @var */
 var IS_MOBILE = window.navigator.userAgent.indexOf('Mobi') > -1 || IS_IOS;
 
-/** @const */
+/** @var */
 var IS_TOUCH_ENABLED = 'ontouchstart' in window;
 
 /**
@@ -391,16 +391,17 @@ Runner.prototype = {
     window.addEventListener(Runner.events.RESIZE,
         this.debounceResize.bind(this));
 
+    var that = this;
     window.addEventListener('gamepadconnected', function(e) {
-      this.gamepadHandler(e, true);
+      that.gamepadHandler(e, true);
     }, false);
     window.addEventListener('gamepaddisconnected', function(e) {
-        this.gamepadHandler(e, false);
+      that.gamepadHandler(e, false);
     }, false);
   },
 
   gamepadHandler: function(event, connecting) {
-    const gamepad = event.gamepad;
+    var gamepad = event.gamepad;
     if (connecting) {
       this.gamepads[gamepad.index] = gamepad;
       console.log('🎮 Gamepad connected', gamepad);
@@ -430,18 +431,18 @@ Runner.prototype = {
     if (!this.crashed) {
       return;
     }
-    const gamepads = navigator.getGamepads();
+    var gamepads = navigator.getGamepads();
     for (let i = 0, len = gamepads.length; i < len; i++) {
-      const gamepad = gamepads[i];
+      var gamepad = gamepads[i];
       if (!gamepad) {
           continue;
       }
       // Left analog stick.
-      const y = gamepad.axes[1];
+      var y = gamepad.axes[1];
       // Left D-pad.
-      const up = gamepad.buttons[12].pressed;
+      var up = gamepad.buttons[12].pressed;
       // A/B/X/Y Buttons
-      const buttonPressed = gamepad.buttons[0].pressed ||
+      var buttonPressed = gamepad.buttons[0].pressed ||
           gamepad.buttons[1].pressed || gamepad.buttons[2].pressed ||
           gamepad.buttons[3].pressed;
       if (up || y <= -0.5 || buttonPressed) {
@@ -451,34 +452,34 @@ Runner.prototype = {
   },
 
   gamepadLoop: function() {
-    const gamepads = navigator.getGamepads();
+    var gamepads = navigator.getGamepads();
     for (let i = 0, len = gamepads.length; i < len; i++) {
-      const gamepad = gamepads[i];
+      var gamepad = gamepads[i];
       if (!gamepad) {
           continue;
       }
       // Left analog stick.
-      const y = gamepad.axes[1];
+      var y = gamepad.axes[1];
       // Left D-pad.
-      const up = gamepad.buttons[12].pressed;
-      const down = gamepad.buttons[13].pressed;
+      var up = gamepad.buttons[12].pressed;
+      var down = gamepad.buttons[13].pressed;
       // A/B/X/Y Buttons
-      const buttonPressed = gamepad.buttons[0].pressed ||
+      var buttonPressed = gamepad.buttons[0].pressed ||
           gamepad.buttons[1].pressed || gamepad.buttons[2].pressed ||
           gamepad.buttons[3].pressed;
       if (up || y <= -0.5 || buttonPressed) {
-        const event = new Event('keydown');
+        var event = new Event('keydown');
         event.keyCode = 32; // Space key
         document.dispatchEvent(event);
         this.gamepadsIdle = false;
       } else if (down || y >= 0.5) {
-        const event = new Event('keydown');
+        var event = new Event('keydown');
         event.keyCode = 40; // Arrow down
         document.dispatchEvent(event);
         this.gamepadsIdle = false;
       } else if (!down && !(y >= 0.5)) {
         if (!this.gamepadsIdle && this.tRex.status === Trex.status.DUCKING) {
-          const event = new Event('keyup');
+          var event = new Event('keyup');
           event.keyCode = 40; // Arrow down
           document.dispatchEvent(event);
         }

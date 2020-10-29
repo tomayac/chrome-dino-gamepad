@@ -7,13 +7,18 @@
   </head>
 
   <body>
-    <div id="dark-mode-toggle" title="Dark mode toggle">🌒</div>
+    <div id="dark-mode-toggle" title="Dark mode toggle">🌙</div>
 
     <div class="interstitial-wrapper"></div>
     <!-- <div class="controller"><button type="button">🎮 Connect Joy-Con</button></div> -->
     <script>
       window.onerror = function (msg, url, lineNo, columnNo, error) {
-        document.body.innerHTML += 'msg ' + msg + 'url ' + url + 'line ' + lineNo + 'col ' + columnNo + 'err ' + error + ' END ';
+        document.body.innerHTML += '<pre>Message: ' + msg +
+            '\nURL: ' + url +
+            '\nLine: ' + lineNo +
+            '\nColumn: ' + columnNo +
+            '\nError: ' + error +
+            '\n\n</pre>';
       }
     </script>
 
