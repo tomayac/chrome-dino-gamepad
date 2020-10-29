@@ -21,13 +21,13 @@ darkModeToggleBtn.addEventListener('click', () => {
 });
 
 function enableDarkMode() {
-  darkModeToggleBtn.innerHTML = '🌞';
+  darkModeToggleBtn.innerHTML = '☀️';
   localStorage.setItem('theme', 'dark');
   document.body.classList.add('dark-mode');
 }
 
 function disableDarkMode() {
-  darkModeToggleBtn.innerHTML = '🌒';
+  darkModeToggleBtn.innerHTML = '🌙';
   localStorage.setItem('theme', 'light');
   document.body.classList.remove('dark-mode');
 }
@@ -35,6 +35,10 @@ function disableDarkMode() {
 window
   .matchMedia('(prefers-color-scheme: dark)')
   .addListener((e) => (e.matches ? enableDarkMode() : disableDarkMode()));
+window
+  .matchMedia('(prefers-color-scheme: dark)').matches
+  ? enableDarkMode() :
+  disableDarkMode();
 
 /**
  * T-Rex runner.
@@ -42,7 +46,7 @@ window
  * @param {Object} opt_config
  * @constructor
  * @export
- * 
+ *
  */
 function Runner(outerContainerId, opt_config) {
   // Singleton
@@ -311,7 +315,7 @@ Runner.prototype = {
    * Load and decode base 64 encoded sounds.
    */
   loadSounds: function() {
-    if (!IS_IOS) {
+    if ('AudioContext' in window) {
       this.audioContext = new AudioContext();
 
       var resourceTemplate =
