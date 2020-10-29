@@ -12,8 +12,8 @@
     <div class="interstitial-wrapper"></div>
     <!-- <div class="controller"><button type="button">🎮 Connect Joy-Con</button></div> -->
     <script>
-      window.onerror = function(err) {
-        document.body.innerHTML += err.name + ' Message ' + err.message + ' next ';
+      window.onerror = function (msg, url, lineNo, columnNo, error) {
+        document.body.innerHTML += 'msg ' + msg + 'url ' + url + 'line ' + lineNo + 'col ' + columnNo + 'err ' + error + ' END ';
       }
     </script>
 
