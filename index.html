@@ -10,7 +10,12 @@
     <div id="dark-mode-toggle" title="Dark mode toggle">🌒</div>
 
     <div class="interstitial-wrapper"></div>
-    <div class="controller"><button type="button">🎮 Connect Joy-Con</button></div>
+    <!-- <div class="controller"><button type="button">🎮 Connect Joy-Con</button></div> -->
+    <script>
+      window.onerror = function(err) {
+        alert(err.name, err.message);
+      }
+    </script>
 
     <div id="offline-resources">
       <img id="offline-resources-1x" src="images/100-percent/100-offline-sprite.png">
