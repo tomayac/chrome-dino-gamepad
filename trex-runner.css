@@ -37,6 +37,16 @@ body {
   position: fixed;
   top: 30px;
   right: 30px;
+  font-size: 20px;
+  cursor: pointer;
+  color: transparent;
+  text-shadow: 0 0 0 #bbb;
+}
+
+#fullscreen-toggle {
+  position: fixed;
+  top: 29px;
+  right: 75px;
   font-size: 25px;
   cursor: pointer;
   color: transparent;

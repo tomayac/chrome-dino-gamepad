@@ -1859,6 +1859,40 @@
 })();
 
 (function () {
+  function launchIntoFullscreen(element) {
+    if(element.requestFullscreen) {
+      element.requestFullscreen();
+    } else if(element.mozRequestFullScreen) {
+      element.mozRequestFullScreen();
+    } else if(element.webkitRequestFullscreen) {
+      element.webkitRequestFullscreen();
+    } else if(element.msRequestFullscreen) {
+      element.msRequestFullscreen();
+    }
+  }
+
+  function exitFullscreen() {
+    if(document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if(document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+    } else if(document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    }
+  }
+
+  var fullscreenBtn = document.getElementById('fullscreen-toggle');
+  fullscreenBtn.addEventListener('click', function() {
+    var fullscreenElement = document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement;
+    if (fullscreenElement) {
+      fullscreenBtn.textContent = '⇱';
+      return exitFullscreen();
+    }
+    var canvas = document.getElementsByTagName('canvas')[0];
+    launchIntoFullscreen(canvas);
+    fullscreenBtn.textContent = '⇲';
+  });
+
   var darkModeToggleBtn = document.getElementById('dark-mode-toggle');
   let theme = localStorage.getItem('theme');
 
