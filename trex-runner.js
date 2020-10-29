@@ -408,11 +408,12 @@ Runner.prototype = {
       // We need this so the game remains resumable from the gamepad in the
       // "game over" state.
       if (Object.keys(this.gamepads).length === 1) {
+        var that = this;
         this.gamepadRestartInterval = setInterval(function() {
-          this.gamepadRestart();
+          that.gamepadRestart();
         }, 100);
         this.gamepadIdleInterval = setInterval(function() {
-          this.gamepadsIdle = true;
+          that.gamepadsIdle = true;
         }, 10000);
       }
     } else {
