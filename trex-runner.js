@@ -1918,8 +1918,8 @@
     launchIntoFullscreen(canvas);
     canvas.width = screen.availWidth;
     canvas.height = screen.availWidth / aspectRatio;
-    canvas.style.width = screen.availWidth + 'px !important';
-    canvas.style.height = (screen.availWidth / aspectRatio) + 'px !important';
+    canvas.style.width = screen.availWidth + 'px';
+    canvas.style.height = (screen.availWidth / aspectRatio) + 'px';
     fullscreenBtn.textContent = '█';
   });
 
