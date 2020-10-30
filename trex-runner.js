@@ -1926,7 +1926,7 @@
   }
 
   function disableDarkMode() {
-    darkModeToggleBtn.innerHTML = '🌙';
+    darkModeToggleBtn.innerHTML = '☽';
     localStorage.setItem('theme', 'light');
     document.body.classList.remove('dark-mode');
   }
