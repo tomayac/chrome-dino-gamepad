@@ -45,10 +45,14 @@ body {
 
 #fullscreen-toggle {
   position: fixed;
-  top: 29px;
+  top: 32px;
   right: 75px;
-  font-size: 25px;
+  font-size: 18px;
   cursor: pointer;
   color: transparent;
   text-shadow: 0 0 0 #bbb;
+}
+
+canvas {
+  background-color: var(--primary-bg);
 }

@@ -1859,6 +1859,18 @@
 })();
 
 (function () {
+  function supportsFullscreen() {
+    return ['requestFullscreen', 'mozRequestFullScreen', 'webkitRequestFullscreen', 'msRequestFullscreen'].filter(function(method) {
+      return method in document.body;
+    }).length > 0;
+  }
+
+  var fullscreenBtn = document.getElementById('fullscreen-toggle');
+  if (!supportsFullscreen()) {
+    fullscreenBtn.style.display = 'none';
+    return;
+  }
+
   function launchIntoFullscreen(element) {
     if(element.requestFullscreen) {
       element.requestFullscreen();
@@ -1881,16 +1893,34 @@
     }
   }
 
-  var fullscreenBtn = document.getElementById('fullscreen-toggle');
+  var width = null;
+  var height = null;
+  var widthStyle = null;
+  var heightStyle = null;
+
   fullscreenBtn.addEventListener('click', function() {
     var fullscreenElement = document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement;
-    if (fullscreenElement) {
-      fullscreenBtn.textContent = '⇱';
-      return exitFullscreen();
-    }
     var canvas = document.getElementsByTagName('canvas')[0];
+    if (fullscreenElement) {
+      fullscreenBtn.textContent = '░';
+      exitFullscreen();
+      canvas.width = width;
+      canvas.height = height;
+      canvas.style.width = widthStyle
+      canvas.style.height = heightStyle
+      return;
+    }
+    width = canvas.width;
+    height = canvas.height;
+    widthStyle = canvas.style.width;
+    heightStyle = canvas.style.height;
+    aspectRatio = width / height;
     launchIntoFullscreen(canvas);
-    fullscreenBtn.textContent = '⇲';
+    canvas.width = screen.availWidth;
+    canvas.height = screen.availWidth / aspectRatio;
+    canvas.style.width = screen.availWidth + 'px !important';
+    canvas.style.height = (screen.availWidth / aspectRatio) + 'px !important';
+    fullscreenBtn.textContent = '█';
   });
 
   var darkModeToggleBtn = document.getElementById('dark-mode-toggle');
