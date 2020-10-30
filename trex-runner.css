@@ -53,16 +53,11 @@ body {
   text-shadow: 0 0 0 #bbb;
 }
 
-*:fullscreen,
-*:-webkit-full-screen,
-*:-moz-full-screen,
-canvas {
-  background-color: #fff;
+*:-webkit-full-screen {
+  background-color: var(--primary-bg);
 }
 
-body.dark-mode *:fullscreen,
-body.dark-mode *:-webkit-full-screen,
-body.dark-mode *:-moz-full-screen,
-body.dark-mode canvas {
-  background-color: #000;
+html,
+body {
+  background-color: var(--primary-bg);
 }
