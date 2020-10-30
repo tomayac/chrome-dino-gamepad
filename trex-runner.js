@@ -1893,33 +1893,15 @@
     }
   }
 
-  var width = null;
-  var height = null;
-  var widthStyle = null;
-  var heightStyle = null;
-
   fullscreenBtn.addEventListener('click', function() {
     var fullscreenElement = document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement;
     var canvas = document.getElementsByTagName('canvas')[0];
     if (fullscreenElement) {
       fullscreenBtn.textContent = '░';
       exitFullscreen();
-      canvas.width = width;
-      canvas.height = height;
-      canvas.style.width = widthStyle
-      canvas.style.height = heightStyle
       return;
     }
-    width = canvas.width;
-    height = canvas.height;
-    widthStyle = canvas.style.width;
-    heightStyle = canvas.style.height;
-    aspectRatio = width / height;
     launchIntoFullscreen(canvas);
-    canvas.width = screen.availWidth;
-    canvas.height = screen.availWidth / aspectRatio;
-    canvas.style.width = screen.availWidth + 'px';
-    canvas.style.height = (screen.availWidth / aspectRatio) + 'px';
     fullscreenBtn.textContent = '█';
   });
 
