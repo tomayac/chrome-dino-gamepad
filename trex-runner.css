@@ -34,6 +34,8 @@ body {
 }
 
 #dark-mode-toggle {
+  border: none;
+  background: none;
   position: fixed;
   top: 30px;
   right: 30px;
@@ -44,6 +46,8 @@ body {
 }
 
 #fullscreen-toggle {
+  border: none;
+  background: none;
   position: fixed;
   top: 32px;
   right: 75px;
