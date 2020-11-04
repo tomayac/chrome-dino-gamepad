@@ -11,6 +11,7 @@ const OFFLINE_RESOURCES = [
   "trex-runner.css",
   "manifest.webmanifest",
   "images/200-error-offline.png",
+  "images/200-error-offline-512.png",
   "images/offline-sprite-1x.png",
   "images/offline-sprite-2x.png",
 ];
