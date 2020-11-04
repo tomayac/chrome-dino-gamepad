@@ -255,23 +255,23 @@
       }
       this.init();
     },
-    loadSounds: function () {
-      if (!IS_IOS && AudioContext) {
+    loadSounds() {
+      if (!IS_IOS) {
         this.audioContext = new AudioContext();
-        var resourceTemplate = document.getElementById(
-          this.config.RESOURCE_TEMPLATE_ID,
-        ).content;
-        for (var sound in Runner.sounds) {
-          var soundSrc = resourceTemplate.getElementById(Runner.sounds[sound])
-            .src;
+
+        const resourceTemplate =
+            document.getElementById(this.config.RESOURCE_TEMPLATE_ID).content;
+
+        for (const sound in Runner.sounds) {
+          let soundSrc =
+              resourceTemplate.getElementById(Runner.sounds[sound]).src;
           soundSrc = soundSrc.substr(soundSrc.indexOf(',') + 1);
-          var buffer = decodeBase64ToArrayBuffer(soundSrc);
-          this.audioContext.decodeAudioData(
-            buffer,
-            function (index, audioData) {
+          const buffer = decodeBase64ToArrayBuffer(soundSrc);
+
+          // Async, so no guarantee of order in array.
+          this.audioContext.decodeAudioData(buffer, function(index, audioData) {
               this.soundFx[index] = audioData;
-            }.bind(this, sound),
-          );
+            }.bind(this, sound));
         }
       }
     },
@@ -797,12 +797,17 @@
     return canvas;
   }
 
+  /**
+   * Decodes the base 64 audio to ArrayBuffer used by Web Audio.
+   * @param {string} base64String
+   */
   function decodeBase64ToArrayBuffer(base64String) {
-    var len = (base64String.length / 4) * 3;
-    var str = atob(base64String);
-    var arrayBuffer = new ArrayBuffer(len);
-    var bytes = new Uint8Array(arrayBuffer);
-    for (var i = 0; i < len; i++) {
+    const len = (base64String.length / 4) * 3;
+    const str = atob(base64String);
+    const arrayBuffer = new ArrayBuffer(len);
+    const bytes = new Uint8Array(arrayBuffer);
+
+    for (let i = 0; i < len; i++) {
       bytes[i] = str.charCodeAt(i);
     }
     return bytes.buffer;
