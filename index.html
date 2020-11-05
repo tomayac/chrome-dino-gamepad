@@ -48,6 +48,12 @@
           navigator.serviceWorker.register('serviceworker.js');
         });
       }
+      if (
+        /\b(iPad|iPhone|iPod)\b/.test(navigator.userAgent) &&
+        !matchMedia('(display-mode: standalone)').matches
+      ) {
+        import('https://unpkg.com/pwacompat');
+      }
     </script>
   </body>
 </html>
