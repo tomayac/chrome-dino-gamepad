@@ -1,0 +1,5 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target" : { "namespace": "android_app", "package_name": "io.github.tomayac.chrome_dino_gamepad",
+                   "sha256_cert_fingerprints": ["11:28:2F:61:F8:63:1C:BF:42:20:FE:5D:7C:4B:65:40:79:C8:88:2C:23:DB:D9:94:F2:35:DD:45:C1:D5:40:D0"] }
+    }]
