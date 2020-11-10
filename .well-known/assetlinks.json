@@ -1,5 +1,10 @@
 [{
-      "relation": ["delegate_permission/common.handle_all_urls"],
-      "target" : { "namespace": "android_app", "package_name": "io.github.tomayac.chrome_dino_gamepad",
-                   "sha256_cert_fingerprints": ["11:28:2F:61:F8:63:1C:BF:42:20:FE:5D:7C:4B:65:40:79:C8:88:2C:23:DB:D9:94:F2:35:DD:45:C1:D5:40:D0"] }
-    }]
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "io.github.tomayac.chrome_dino_gamepad",
+    "sha256_cert_fingerprints": [
+      "48:4C:C4:48:81:FB:47:19:D4:C7:F6:24:5B:D6:8E:F4:02:D7:97:21:DA:18:0C:9E:E9:6A:E3:F3:B5:EF:D0:26"
+    ]
+  }
+}]
