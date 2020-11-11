@@ -1876,7 +1876,8 @@
     return;
   }
 
-  if (!window.matchMedia('(display-mode: fullscreen)').matches) {
+  if ((!window.matchMedia('(display-mode: fullscreen)').matches) &&
+      (!window.matchMedia('(display-mode: standalone)').matches)) {
     fullscreenBtn.hidden = false;
   }
 
