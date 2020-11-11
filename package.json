@@ -1,6 +1,6 @@
 {
   "name": "chrome-dino-gamepad",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The Chrome dino game with gamepad support.",
   "main": "trex-runner.js",
   "scripts": {
