@@ -1907,12 +1907,12 @@
     var fullscreenElement = document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement;
     var canvas = document.getElementsByTagName('canvas')[0];
     if (fullscreenElement) {
-      fullscreenBtn.textContent = '░';
+      fullscreenBtn.textContent = '□';
       exitFullscreen();
       return;
     }
     launchIntoFullscreen(canvas);
-    fullscreenBtn.textContent = '█';
+    fullscreenBtn.textContent = '■';
   });
 
   var darkModeToggleBtn = document.getElementById('dark-mode-toggle');
