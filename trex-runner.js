@@ -1876,6 +1876,10 @@
     return;
   }
 
+  if (!window.matchMedia('(display-mode: fullscreen)').matches) {
+    fullscreenBtn.hidden = false;
+  }
+
   function launchIntoFullscreen(element) {
     if(element.requestFullscreen) {
       element.requestFullscreen();
