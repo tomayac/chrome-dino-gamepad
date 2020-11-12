@@ -4,6 +4,10 @@
   --primary-fg: #000;
 }
 
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
 .dark-mode {
   --primary-bg: #020202;
   --primary-fg: #fff;
